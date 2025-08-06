@@ -22,7 +22,7 @@ subjects:
   namespace: roboshop 
 roleRef: 
 # this role ref specifies the binding to role or cluster role 
-- kind: Role # this must be a role or cluster role 
+  kind: Role # this must be a role or cluster role 
   name: sa-reader # this must watch the name of role or cluster role this wish to bind to 
   apiGroup: rbac.authorization.k8s.io 
 --- 
