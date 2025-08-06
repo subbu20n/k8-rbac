@@ -1,41 +1,21 @@
-apiVersion: rbac.authentication.k8s.io/v1 
-kind: Role 
-metadata: 
-    name: sa-reader 
-    namespace: roboshop 
-rules: 
-- apiGroups: [""]  # "" indicates the core API group 
-  resources: [""] # nouns
-  verbs: ["get","watch","list"] # actions 
---- 
+apiVersion: v1
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::888947293288:role/eksctl-roboshop-nodegroup-roboshop-NodeInstanceRole-T11tFJ9fQBHw
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      username: system:node:{{EC2PrivateDNSName}}
+mapUsers: |
+    - groups:
+      - roboshop-trainee 
+      userarn: arn:aws:iam::888947293288:user/suresh
+      username: suresh
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-08-06T14:41:20Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "1375"
+  uid: 6e310680-c6f1-441e-956e-5cde1a563f13
 
-apiVersion: rbac.authentication.k8s.io/v1 
-kind: RoleBinding  
-metadata: 
-    name: sa-reader 
-    namespace: roboshop 
-subjects: 
-# you can specify the subject more than one 
-- kind: ServiceAccount 
-  name: robosho-mysql-secret-reader 
-  apiGroup: rbac.authetication.k8s.io 
-roleRef: 
-# the role ref specifies the role binding to role or cluster role
-- kind: Role # this must be role or cluster role 
-  name: sa-reader  # this must watch the name of the role or cluster role this wish to bind to 
-  apiGroup: rbac.authentication.k8s.io 
---- 
-
-apiVersion: v1 
-kind: Pod 
-metadata: 
-    name: aws-cli 
-    namespace: roboshop 
-    labels:
-      purpose: sa 
-spec: 
-   serviceAcoount: roboshop-mysql-secret-header 
-   containers: 
-   - name: aws-cli 
-     images: amazon/aws-cli 
-     command: ["sleep","1000"]    
