@@ -20,10 +20,10 @@ subjects:
 # you can specifies the more than one subject 
 - kind: User 
   name: roboshop-trainee 
-  apiGroup: rbac.authentication.k8s.io 
+  apiGroup: rbac.authorization.k8s.io 
 roleRef:
 # the role ref specifies the binding to role or cluster role 
 - kind: Role 
   name: roboshop-trainee 
-  apiGroup: rbac.authentication.k8s.io 
+  apiGroup: rbac.authorization.k8s.io 
          
