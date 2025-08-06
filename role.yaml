@@ -1,0 +1,29 @@
+apiVersion: rbac.authentication.k8s.io/v1 
+kind: Role 
+metadata: 
+     namespace: roboshop 
+     name: roboshop-trainee 
+rules: 
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"] # nouns 
+  verbs: ["get","watch","list"]  # actions 
+--- 
+
+apiVersion: rbac.authentication.k8s.io/v1 
+# the role binding allows "jane", to read pods in the default namespace 
+# you need to already have role named "pod-reader" in that namespace 
+kind: RoleBinding 
+metadata: 
+     namespace: roboshop 
+     name: roboshop-trainee 
+subjects:
+# you can specifies the more than one subject 
+- kind: User 
+  name: roboshop-trainee 
+  apiGroup: rbac.authentication.k8s.io 
+roleRef:
+# the role ref specifies the binding to role or cluster role 
+- kind: Role 
+  name: roboshop-trainee 
+  apiGroup: rbac.authentication.k8s.io 
+         
