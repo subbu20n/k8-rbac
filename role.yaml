@@ -49,6 +49,6 @@ subjects:
 roleRef:
 # the role ref specifies the binding to role or cluster role 
   kind: Role 
-  name: roboshop-junior 
+  name: roboshop-lead 
   apiGroup: rbac.authorization.k8s.io 
          
