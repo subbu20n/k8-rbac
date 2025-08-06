@@ -23,7 +23,7 @@ subjects:
   apiGroup: rbac.authorization.k8s.io 
 roleRef:
 # the role ref specifies the binding to role or cluster role 
-- kind: Role 
+  kind: Role 
   name: roboshop-trainee 
   apiGroup: rbac.authorization.k8s.io 
          
