@@ -60,7 +60,7 @@ metadata:
      namespace: roboshop 
 rules: 
 - apiGroups: [""] # "" indicates the core API group 
-  resources: ["persistentvolume"]  
+  resources: ["persistentvolumes"]  
   verbs: ["get","watch","list"] 
 --- 
 
