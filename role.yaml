@@ -75,4 +75,4 @@ subjects:
 roleRef:
   kind: ClusterRole 
   name: roboshop-cluster 
-  apigroup: rbac.authorization.k8s.io        
+  apiGroup: rbac.authorization.k8s.io        
