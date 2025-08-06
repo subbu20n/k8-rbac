@@ -73,6 +73,6 @@ subjects:
   name: suresh # name should be case sensitive 
   apiGroup: rbac.authorization.k8s.io 
 roleRef:
-- kind: ClusterRole 
+  kind: ClusterRole 
   name: roboshop-cluster 
   apigroup: rbac.authorization.k8s.io        
