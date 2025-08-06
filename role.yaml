@@ -8,6 +8,22 @@ rules:
   resources: ["pods"] # nouns 
   verbs: ["get","watch","list"]  # actions 
 --- 
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role 
+metadata: 
+     namespace: roboshop 
+     name: roboshop-junior 
+rules: 
+- apiGroups: [""] # "" indicates the core API group 
+  resources: ["pods"] # nouns 
+  verbs: ["get","watch","list","create"]  # actions 
+- apiGroups: [""] 
+  # 
+  # this is HTTP level, this can be accessing by deployments 
+  # objects is deployments 
+  resources: ["deployments"] # nouns 
+  verbs: ["get","watch","list","create","update","patch","delete"]        
+---
 
 apiVersion: rbac.authorization.k8s.io/v1 
 # the role binding allows "jane", to read pods in the default namespace 
@@ -19,11 +35,11 @@ metadata:
 subjects:
 # you can specifies the more than one subject 
 - kind: User 
-  name: roboshop-trainee 
+  name: suresh  
   apiGroup: rbac.authorization.k8s.io 
 roleRef:
 # the role ref specifies the binding to role or cluster role 
   kind: Role 
-  name: roboshop-trainee 
+  name: roboshop-junior 
   apiGroup: rbac.authorization.k8s.io 
          
