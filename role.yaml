@@ -24,7 +24,16 @@ rules:
   resources: ["deployments"] # nouns 
   verbs: ["get","watch","list","create","update","patch","delete"]        
 ---
-
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role 
+metadata :
+     namespace: robohsop 
+     name: roboshop-lead 
+rules: 
+- apiGroups: ["*"] # "" indicates the core API group 
+  resources: ["*"] # nouns 
+  verbs: ["*"]  # actions 
+---
 apiVersion: rbac.authorization.k8s.io/v1 
 # the role binding allows "jane", to read pods in the default namespace 
 # you need to already have role named "pod-reader" in that namespace 
