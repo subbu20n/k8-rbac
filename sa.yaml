@@ -13,7 +13,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 # you have already the role named pod-reader in that namespace 
 kind: RoleBinding 
 metadata: 
-      namespcae: roboshop 
+      namespace: roboshop 
       name: sa-reader 
 subjects: 
 # you can specify more than one subject 
