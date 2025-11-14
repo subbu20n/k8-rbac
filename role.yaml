@@ -59,7 +59,7 @@ metadata:
   name: roboshop-cluster 
 rules:
 - apiGroups: [""]
-  resources: ["Persistentvolumes"]
+  resources: ["persistentvolumes"]
   verbs: ["get", "watch", "list"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
