@@ -1,78 +1,27 @@
-apiVersion: rbac.authorization.k8s.io/v1 
-kind: Role 
-metadata: 
-     namespace: roboshop 
-     name: roboshop-trainee 
-rules: 
-- apiGroups: [""] # "" indicates the core API group
-  resources: ["pods"] # nouns 
-  verbs: ["get","watch","list"]  # actions 
---- 
-apiVersion: rbac.authorization.k8s.io/v1 
-kind: Role 
-metadata: 
-     namespace: roboshop 
-     name: roboshop-junior 
-rules: 
-- apiGroups: [""] # "" indicates the core API group 
-  resources: ["pods"] # nouns 
-  verbs: ["get","watch","list","create"]  # actions 
-- apiGroups: [""] 
-  # 
-  # this is HTTP level, this can be accessing by deployments 
-  # objects is deployments 
-  resources: ["deployments"] # nouns 
-  verbs: ["get","watch","list","create","update","patch","delete"]        
----
-apiVersion: rbac.authorization.k8s.io/v1 
-kind: Role 
-metadata :
-     namespace: roboshop 
-     name: roboshop-lead 
-rules: 
-- apiGroups: ["*"] # "" indicates the core API group 
-  resources: ["*"] # nouns 
-  verbs: ["*"]  # actions 
----
-apiVersion: rbac.authorization.k8s.io/v1 
-# the role binding allows "jane", to read pods in the default namespace 
-# you need to already have role named "pod-reader" in that namespace 
-kind: RoleBinding 
-metadata: 
-     namespace: roboshop 
-     name: suresh
-subjects:
-# you can specifies the more than one subject 
-- kind: User 
-  name: suresh  
-  apiGroup: rbac.authorization.k8s.io 
-roleRef:
-# the role ref specifies the binding to role or cluster role 
-  kind: Role 
-  name: roboshop-lead 
-  apiGroup: rbac.authorization.k8s.io 
---- 
-
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole 
-metadata: 
-     name: roboshop-cluster 
-     namespace: roboshop 
-rules: 
-- apiGroups: [""] # "" indicates the core API group 
-  resources: ["persistentvolumes"]  
-  verbs: ["get","watch","list"] 
+kind: Role
+metadata:
+  namespace: roboshop
+  name: roboshop-trainee 
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
 --- 
-
-apiVersion: rbac.authorization.k8s.io/v1 
-kind: ClusterRoleBinding 
-metadata: 
-     name: roboshop-cluster 
-subjects: 
-- kind: User 
-  name: suresh # name should be case sensitive 
-  apiGroup: rbac.authorization.k8s.io 
+apiVersion: rbac.authorization.k8s.io/v1
+# This role binding allows "jane" to read pods in the "default" namespace.
+# You need to already have a Role named "pod-reader" in that namespace.
+kind: RoleBinding
+metadata:
+  name: roboshop-trainee  
+  namespace: roboshop 
+subjects:
+# You can specify more than one "subject"
+- kind: User
+  name: suresh # "name" is case sensitive
+  apiGroup: rbac.authorization.k8s.io
 roleRef:
-  kind: ClusterRole 
-  name: roboshop-cluster 
-  apiGroup: rbac.authorization.k8s.io        
+  # "roleRef" specifies the binding to a Role / ClusterRole
+  kind: Role #this must be Role or ClusterRole
+  name: roboshop-trainee # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
