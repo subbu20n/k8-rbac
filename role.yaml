@@ -17,6 +17,12 @@ rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods","deployments"]
   verbs: ["get", "watch", "list" , "create"] 
+- apiGroups: ["apps"]
+  #
+  # at the HTTP level, the name of the resource for accessing Deployment
+  # objects is "deployments"
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 # This role binding allows "jane" to read pods in the "default" namespace.
@@ -33,5 +39,5 @@ subjects:
 roleRef:
   # "roleRef" specifies the binding to a Role / ClusterRole
   kind: Role #this must be Role or ClusterRole
-  name: roboshop-trainee # this must match the name of the Role or ClusterRole you wish to bind to
+  name: roboshop-junior # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io
