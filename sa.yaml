@@ -29,13 +29,13 @@ roleRef:
 apiVersion: v1 
 kind: Pod 
 metadata: 
-     name: aws-cli 
+     name: aws-cli
      namespace: roboshop 
      labels: 
-        purpose: sa 
+        purpose: sa
 spec: 
    serviceAccount: roboshop-mysql-secret-reader 
-   containers: 
-   - name: aws-cli 
+   container: 
+   - name: awscli 
      image: amazon/aws-cli 
-     command: ["sleep","1000"]             
+     command: ["sleep","1000"]        
