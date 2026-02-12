@@ -6,6 +6,6 @@ metadata:
   creationTimestamp: "2025-11-14T11:05:04Z"
   labels:
     app.kubernetes.io/managed-by: eksctl
-  name: roboshop-mysql-secret-reader
+  name: roboshop-mysql-secret-reader 
   namespace: roboshop
-  uid: 7eb60370-bb6c-4562-922e-277dd3ec4219
+  uid: 7eb60370-bb6c-4562-922e-277dd3ec4219 
