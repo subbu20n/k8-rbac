@@ -13,7 +13,7 @@ kind: Role
 metadata:
   namespace: roboshop
   name: roboshop-junior 
-rules:
+rules:         
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods","deployments"]
   verbs: ["get", "watch", "list" , "create"] 
@@ -26,7 +26,7 @@ rules:
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
-metadata:
+metadata:    
   namespace: roboshop
   name: roboshop-lead
 rules:
