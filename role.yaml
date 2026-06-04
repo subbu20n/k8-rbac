@@ -16,7 +16,7 @@ metadata:
 rules:         
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods","deployments"]
-  verbs: ["get", "watch", "list" , "create"] 
+  verbs: ["get", "watch", "list" , "create"]  
 - apiGroups: ["apps"]
   #
   # at the HTTP level, the name of the resource for accessing Deployment
