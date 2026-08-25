@@ -17,7 +17,7 @@ rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods","deployments"]
   verbs: ["get", "watch", "list" , "create"]  
-- apiGroups: ["apps"]
+- apiGroups: ["apps"]   
   #
   # at the HTTP level, the name of the resource for accessing Deployment
   # objects is "deployments"
